@@ -18,8 +18,11 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
-                localStorage.setItem('token', data.token);
-                navigate('/orders');
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    navigate('/orders');
+                }
+
             })
     }
 
